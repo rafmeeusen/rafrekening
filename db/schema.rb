@@ -12,10 +12,26 @@
 
 ActiveRecord::Schema.define(:version => 20120102230922) do
 
+  create_table "expenses", :force => true do |t|
+    t.integer  "person_id"
+    t.decimal  "amount"
+    t.string   "description"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "people", :force => true do |t|
     t.integer  "project_id"
     t.string   "name"
     t.decimal  "pweight",    :default => 1.0
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "peweights", :force => true do |t|
+    t.integer  "person_id"
+    t.integer  "expense_id"
+    t.decimal  "weight"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
