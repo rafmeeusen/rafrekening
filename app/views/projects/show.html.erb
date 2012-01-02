@@ -1,8 +1,75 @@
+<p id="notice"><%= notice %></p>
+
 
 <h1>Project <%= @project.secret %></h1>
 
 <p>Project id: <%= @project.id %> </p>
 
-<p>Find me in app/views/projects/show.html.erb</p>
 
+<table>
+  <b>People:</b> <br>
+  <tr>
+    <th></th>  <th></th>  <th></th>
+  </tr> 
+  <% @project.people.each do |person| %>
+    <tr><td><%= person.name %> (weight <%= person.pweight %>)</td>
+        <td><%= link_to 'Edit', edit_person_path(person) %></td>
+        <td><!--%= link_to 'Destroy', person, confirm: 'Are you sure?', method: :delete %--></td>
+    </tr>
+  <% end %>
+</table>
+
+<p>
+<%= link_to 'Add Person', new_person_path(@project.secret) %>
+</p>
+
+<table>
+  <b>Expenses:</b> <br>
+  <tr>
+    <th>Person</th>
+    <th>Amount</th>
+    <th>Description</th>
+    <th></th>
+    <th></th>
+  </tr>
+<% @project.expenses.each do |expense| %>
+  <tr>
+    <td><%= expense.person.name %></td>
+    <td><%= expense.amount %></td>
+    <td><%= expense.description %></td>
+    <td><!--%= link_to 'Edit', edit_expense_path(expense) %--></td>
+    <td><!--%= link_to 'Destroy', expense, confirm: 'Are you sure?', method: :delete %--></td>
+  </tr>
+<% end %>
+</table>
+<p>
+<?%= link_to 'New expense', new_person_expense_path %> 
+</p>
+
+<p>
+  <b>Overal total: <%= @project.totalAmount %> </b>
+</p>
+
+<p>
+<b>Calculation results:</b>
+</p>
+<p>
+<% @project.people.each do |person| %>
+  <% if person.saldo >= 0
+         verb='still to pay'
+     else
+         verb='to get back'
+     end %>
+  <%= person.name %> should contribute <%= person.amountToPay.round(2) %>, 
+  has payed <%= person.totalAmount.round(2) %> already, so has   
+  <%=person.saldo.abs.round(2)%> <%=verb%>. <br>
+<% end %>
+</p>
+
+<table>
+<b>Proposed payments:</b>
+  <% @project.getPayments.each do |pmt| %> 
+    <tr><td> <%= pmt.from %> pays <%= pmt.amount.round(2) %> to <%= pmt.to %>. </td></tr>
+  <% end %> 
+</table>
 
