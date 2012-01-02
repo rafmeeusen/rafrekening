@@ -9,8 +9,11 @@ class ProjectsController < ApplicationController
 
   def show
     @project = Project.find_by_secret(params[:secret]) 
+    #TODO: page 'non-existing URL'if project ? guess yes... 
     if @project.nil?
       redirect_to root_path
+    else
+      @titletemp=@project.secret
     end
   end
 
