@@ -17,8 +17,7 @@ class PeopleController < ApplicationController
     @project = Project.find_by_secret(params[:secret])
     pid = @project.id 
     pers= params[:person]
-    name= pers[:name]
-    @person = Person.new(:project_id=>pid,:name=>name)
+    @person = Person.new(:project_id=>pid,:name=>pers[:name],:pweight=>pers[:pweight])
     @person.save
     redirect_to root_path + params[:secret]
   end
@@ -29,5 +28,10 @@ class PeopleController < ApplicationController
       redirect_to root_path + params[:secret]
     end
   end
-
+  
+  def destroy
+    person = Project.find_by_secret(params[:secret]).people.find_by_name(params[:name])
+    person.destroy 
+    redirect_to root_path + params[:secret]
+  end
 end

@@ -19,5 +19,10 @@ class ExpensesController < ApplicationController
     @expense.save
     redirect_to root_path + params[:secret] + "/"+ params[:name]
   end
-
+  
+  def destroy
+    expense=Expense.find(params[:id])
+    expense.destroy
+    redirect_to root_path + params[:secret] + "/" + params[:name]
+  end
 end

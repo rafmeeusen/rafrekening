@@ -1,11 +1,9 @@
-<h1>New person for project <%=@project.secret %></h1>
+<h1>New person </h1>
 
 <%  
 action="/" + @project.secret + "/people"
 %>
 
-Action:
-<%= action %>
 
 <form accept-charset="UTF-8" 
 action=<%= action %>
@@ -24,4 +22,4 @@ class="new_person" id="new_person" method="post"><div style="margin:0;padding:0;
   </div>
 </form>
 
-<= link_to 'Back', people_path %>
+<%= link_to 'Back', root_path + @project.secret %>

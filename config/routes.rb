@@ -6,7 +6,9 @@ Coodle::Application.routes.draw do
 
   match '/:secret/people/new', :to => 'people#new'
   match '/:secret/people', :to => 'people#create'
-  match '/:secret/:name', :to => 'people#show'
+  get   '/:secret/:name', :to => 'people#show'
+  delete '/:secret/:name', :to => 'people#destroy'
+  delete '/:secret/:name/expenses/:id', :to => 'expenses#destroy'
   match '/:secret/:name/expenses', :to => 'expenses#create'  
   match '/:secret/:name/edit', :to => 'people#edit'
 

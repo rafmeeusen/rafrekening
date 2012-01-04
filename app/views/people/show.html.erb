@@ -1,19 +1,28 @@
-
+<p> <%= link_to 'Back', root_path + @project.secret %> </p>
 
 <p> <b>Name:</b> <%= @person.name %> </p>
-<p> <b>Person Id: </b>  <%= @person.id %> </p>
-
-<table>
-<b>Number of expenses: <%=@person.expenses.count %> </b> 
-  <% @person.expenses.each do |exp| %> 
-    <tr><td> <%= exp.description %> </td> <td> <%= exp.amount %> </td> </tr>
-  <% end %> 
-</table>
 
 <% addExpPath = root_path + @project.secret + "/" + @person.name + "/new" %>
 <p>
 <%= link_to 'Add expense', addExpPath %>
 </p>
 
-<p> <%= link_to 'To project overview', root_path + @project.secret %> </p>
+<table>
+  <% @person.expenses.each do |exp| %>
+    <% expenseLink=root_path + @project.secret + "/"+ @person.name + "/expenses/" + exp.id.to_s %>
+    <tr> <td> <%= exp.description %> </td> 
+         <td> <%= exp.amount %> </td> 
+         <td> <%= link_to 'Remove expense', expenseLink, :confirm=>'Are you sure?', :method=>:delete %> </td> </tr>
+  <% end %> 
+</table>
 
+<p>
+Number of expenses: <%=@person.expenses.count %> <br>
+Total of expenses: <%=@person.totalAmount %> <br>
+</p>
+
+<p>Debug info: <br>
+Project Id: <%= @project.id %> <br>
+Person Id: <%= @person.id %> <br>
+
+</p>
