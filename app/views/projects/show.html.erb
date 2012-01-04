@@ -1,10 +1,7 @@
 <p id="notice"><%= notice %></p>
 
-
 <h1>Project <%= @project.secret %></h1>
-
 <p>Project id: <%= @project.id %> </p>
-
 
 <table>
   <b>People:</b> <br>
@@ -12,9 +9,10 @@
     <th></th>  <th></th>  <th></th>
   </tr> 
   <% @project.people.each do |person| %>
-    <tr><td><%= person.name %> (weight <%= person.pweight %>)</td>
-        <td><= link_to 'Edit', edit_person_path(person) %></td>
-        <td><!--%= link_to 'Destroy', person, confirm: 'Are you sure?', method: :delete %--></td>
+    <% userLink=root_path + @project.secret + "/"+ person.name %>
+    <tr><td><%= link_to(person.name,userLink) %> (weight <%= person.pweight %>)</td>
+        <td><!--= link_to 'Edit', edit_person_path(person) %--></td>
+        <td><!--= link_to 'Destroy', person, confirm: 'Are you sure?', method: :delete %--></td>
     </tr>
   <% end %>
 </table>

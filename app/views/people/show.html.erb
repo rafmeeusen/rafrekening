@@ -1,0 +1,19 @@
+
+
+<p> <b>Name:</b> <%= @person.name %> </p>
+<p> <b>Person Id: </b>  <%= @person.id %> </p>
+
+<table>
+<b>Number of expenses: <%=@person.expenses.count %> </b> 
+  <% @person.expenses.each do |exp| %> 
+    <tr><td> <%= exp.description %> </td> <td> <%= exp.amount %> </td> </tr>
+  <% end %> 
+</table>
+
+<% addExpPath = root_path + @project.secret + "/" + @person.name + "/new" %>
+<p>
+<%= link_to 'Add expense', addExpPath %>
+</p>
+
+<p> <%= link_to 'To project overview', root_path + @project.secret %> </p>
+
