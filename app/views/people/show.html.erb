@@ -7,12 +7,29 @@
 <%= link_to 'Add expense', addExpPath %>
 </p>
 
+<p><b> List of expenses </b> <br> 
+To remove expense: click on description link. <br>
+To move person between contributers and non-contributers: click on person link. 
+</p>
+
 <table>
+  <tr><td><b>Description</b></td> <td><b>Amount</b></td> <td><b>Contributers</b></td> <td><b>Non-contributers</b></td>
+  </tr>
   <% @person.expenses.each do |exp| %>
     <% expenseLink=root_path + @project.secret + "/"+ @person.name + "/expenses/" + exp.id.to_s %>
-    <tr> <td> <%= exp.description %> </td> 
+    <tr> <td> <%= link_to exp.description, expenseLink, :confirm=>'Are you sure?', :method=>:delete %> </td> 
          <td> <%= exp.amount %> </td> 
-         <td> <%= link_to 'Remove expense', expenseLink, :confirm=>'Are you sure?', :method=>:delete %> </td> </tr>
+         <td> <% exp.getContributers.each do |c| %>
+              <%= link_to c[:person].name, '#' %> 
+              <%= " " %>
+              <% end %> 
+         </td>
+         <td> <% exp.getNonContributers.each do |nc| %>
+              <%= link_to nc[:person].name, '#' %>
+              <%= " " %>
+              <% end %> 
+         </td>
+    </tr>
   <% end %> 
 </table>
 
