@@ -1,5 +1,5 @@
 class ExpensesController < ApplicationController
-
+  include PeopleHelper
   def new
     @project = Project.find_by_secret(params[:secret])
     @person = @project.people.find_by_name(params[:name]) 
@@ -17,12 +17,13 @@ class ExpensesController < ApplicationController
     descr=exp[:description]
     @expense = Expense.new(:person_id=>persid, :amount=>amount, :description=>descr) 
     @expense.save
-    redirect_to root_path + params[:secret] + "/"+ params[:name]
+    redirect_to person_path(params[:name]) 
   end
   
   def destroy
     expense=Expense.find(params[:id])
     expense.destroy
-    redirect_to root_path + params[:secret] + "/" + params[:name]
+    name=expense.person.name
+    redirect_to person_path(name)
   end
 end

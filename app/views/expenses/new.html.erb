@@ -1,7 +1,7 @@
 
-<h1>New expense</h1>
+<h1>New expense for <%=@person.name%></h1>
 
-<% action = "/"+ @project.secret + "/" + @person.name + "/expenses" %>
+<% action = "/"+ @project.secret + "/expenses/" + @person.name %>
 
 <form accept-charset="UTF-8" action=<%=action%> class="new_expense" id="new_expense" method="post"><div style="margin:0;padding:0;display:inline"><input name="utf8" type="hidden" value="&#x2713;" /><input name="authenticity_token" type="hidden" value="zPl7rZ1biip7gQqIrTIj8JymGAqBc5wIG/r5O/BhSeU=" /></div>
 
@@ -20,6 +20,6 @@
   </div>
 </form>
 
-<%= link_to 'Back', root_path + @project.secret + "/" + @person.name %>
+<%= link_to 'Back', person_path(@person.name) %>
 
 

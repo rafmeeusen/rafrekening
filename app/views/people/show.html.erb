@@ -2,9 +2,8 @@
 
 <p> <b>Name:</b> <%= @person.name %> </p>
 
-<% addExpPath = root_path + @project.secret + "/" + @person.name + "/new" %>
 <p>
-<%= link_to 'Add expense', addExpPath %>
+<%= link_to 'Add expense', new_expense_path(@person.name) %>
 </p>
 
 <p><b> List of expenses </b> <br> 
@@ -16,8 +15,7 @@ To move person between contributers and non-contributers: click on person link.
   <tr><td><b>Description</b></td> <td><b>Amount</b></td> <td><b>Contributers</b></td> <td><b>Non-contributers</b></td>
   </tr>
   <% @person.expenses.each do |exp| %>
-    <% expenseLink=root_path + @project.secret + "/"+ @person.name + "/expenses/" + exp.id.to_s %>
-    <tr> <td> <%= link_to exp.description, expenseLink, :confirm=>'Are you sure?', :method=>:delete %> </td> 
+    <tr> <td> <%= link_to exp.description, expense_path(exp.id), :confirm=>'Removing expense. Are you sure?', :method=>:delete %> </td> 
          <td> <%= exp.amount %> </td> 
          <td> <% exp.getContributers.each do |c| %>
               <% link=root_path + @project.secret + "/expenses/" + exp.id.to_s + "/?person=" + c[:person].id.to_s + "&weight=0" %>
