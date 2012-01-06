@@ -1,7 +1,9 @@
 Coodle::Application.routes.draw do
 
   root :to => 'pages#home'
-  get   '/new', :to => 'projects#new'
+
+  get   '/new',     :to => 'projects#new'
+  post  '/new',     :to => 'projects#create'
   get   '/:secret', :to => 'projects#show'
 
   match '/:secret/people/new', :to => 'people#new'

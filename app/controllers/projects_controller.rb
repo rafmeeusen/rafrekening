@@ -1,10 +1,12 @@
 class ProjectsController < ApplicationController
   def new
-    a_new_project = Project.new 
-    a_new_project.save
+  end
+
+  def create
+    a_new_project = Project.create(:title=>params[:title])
     #TODO: is there a method for this new URL? like new_project_path after scaffolding
-    new_url = root_path + a_new_project.secret 
-    redirect_to new_url 
+    new_url = root_path + a_new_project.secret
+    redirect_to new_url
   end
 
   def show
