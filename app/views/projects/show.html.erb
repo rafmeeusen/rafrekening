@@ -12,10 +12,10 @@ Project id: <%= @project.id %> <br>
     <th></th>  <th></th>  <th></th>
   </tr> 
   <% @project.people.each do |person| %>
-    <% userLink=root_path + @project.secret + "/"+ person.name %>
-    <tr><td><%= link_to(person.name,userLink) %> (weight <%= person.pweight %>)</td>
-        <td><!--= link_to 'Edit', edit_person_path(person) %--></td>
-        <td><%= link_to 'Remove person', userLink, :confirm=>'Are you sure?', :method=>:delete %></td>
+    <tr><td><%= link_to person.name, person_path(person.name) %> (weight <%= person.pweight %>)</td>
+        <td><%= link_to 'Edit', person_edit_path(person.name) %></td>
+        <td><%= link_to 'Remove', person_path(person.name), :confirm=>"Removing #{person.name} from project. Are you sure?", 
+                                                            :method=>:delete %></td>
     </tr>
   <% end %>
 </table>
