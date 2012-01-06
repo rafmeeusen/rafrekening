@@ -30,7 +30,7 @@ Project id: <%= @project.id %> <br>
     <th>Person</th>
     <th>Amount</th>
     <th>Description</th>
-    <th></th>
+    <th>Contributors</th>
     <th></th>
   </tr>
 <% @project.expenses.each do |expense| %>
@@ -38,8 +38,16 @@ Project id: <%= @project.id %> <br>
     <td><%= expense.person.name %></td>
     <td><%= expense.amount %></td>
     <td><%= expense.description %></td>
-    <td><!--%= link_to 'Edit', edit_expense_path(expense) %--></td>
-    <td><!--%= link_to 'Destroy', expense, confirm: 'Are you sure?', method: :delete %--></td>
+    <td><% contrib=expense.getContributers %>
+        <% if contrib.length == @project.people.length 
+             contribString = 'All' 
+           else
+             contribString = ''
+             contrib.each{|c| contribString<<( c[:person].name + " ") }
+           end
+          %>
+        <%= contribString %>
+        </td>
   </tr>
 <% end %>
 </table>
