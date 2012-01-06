@@ -20,12 +20,15 @@ To move person between contributers and non-contributers: click on person link.
     <tr> <td> <%= link_to exp.description, expenseLink, :confirm=>'Are you sure?', :method=>:delete %> </td> 
          <td> <%= exp.amount %> </td> 
          <td> <% exp.getContributers.each do |c| %>
-              <%= link_to c[:person].name, '#' %> 
+              <% link=root_path + @project.secret + "/expenses/" + exp.id.to_s + "/?person=" + c[:person].id.to_s + "&weight=0" %>
+              <%= link_to c[:person].name, link %> 
               <%= " " %>
               <% end %> 
          </td>
          <td> <% exp.getNonContributers.each do |nc| %>
-              <%= link_to nc[:person].name, '#' %>
+              <% pewid = Peweight.find_by_person_id_and_expense_id(nc[:person].id, exp.id).id %> 
+              <% pewLink=root_path + @project.secret + "/pew/" + pewid.to_s %> 
+              <%= link_to nc[:person].name, pewLink, :method=>:delete %>
               <%= " " %>
               <% end %> 
          </td>
