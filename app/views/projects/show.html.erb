@@ -70,7 +70,7 @@ Project id: <%= @project.id %> <br>
          verb='to get back'
      end %>
   <%= person.name %> should contribute <%= person.amountToPay.to_f.round(2) %>, 
-  has payed <%= person.totalAmount.to_f.round(2) %> already, so has   
+  has paid <%= person.totalAmount.to_f.round(2) %> already, so has   
   <%=person.saldo.abs.to_f.round(2)%> <%=verb%>. <br>
 <% end %>
 </p>
