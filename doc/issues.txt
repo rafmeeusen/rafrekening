@@ -1,0 +1,4 @@
+-- name with space: crashes when adding expense to this person
+-- expense with no contributors: crashes when calculating costs
+-- expense with only contributors that have zero person-weight: crashes when calculating costs
+
