@@ -4,3 +4,5 @@
 -- too long project name: crashes app
 -- person name ending with space: cannot add expenses
  
+-- hint layout/ideas: checkthis.com
+
