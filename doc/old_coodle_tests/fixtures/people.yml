@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  project: 1
+  name: MyString
+  pweight: 9.99
+
+two:
+  project: 1
+  name: MyString
+  pweight: 9.99
