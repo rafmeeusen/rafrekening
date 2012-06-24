@@ -54,7 +54,7 @@
 <node CREATED="1316258962277" ID="ID_1823506665" MODIFIED="1316259014791" TEXT="switchen tussen verschillende views; data niet verloren maar telt niet meer mee als naar simpelere view gaat"/>
 <node CREATED="1316258980190" ID="ID_1964096506" MODIFIED="1316258990398" TEXT="wysiwyg: alleen wat je ziet telt mee in afrekening"/>
 </node>
-<node CREATED="1316259023231" ID="ID_1055051060" MODIFIED="1316259036959" POSITION="left" TEXT="automatische afrek. met minste transacties (algo?)">
+<node CREATED="1316259023231" FOLDED="true" ID="ID_1055051060" MODIFIED="1340543917282" POSITION="left" TEXT="automatische afrek. met minste transacties (algo?)">
 <node CREATED="1320079032198" ID="ID_905211495" MODIFIED="1320145950230" TEXT="momenteel: iedereen betaalt max. 1 keer (tenzij hoogste bedrag een betaler is) (nog grondiger test!!)"/>
 <node CREATED="1320079064367" ID="ID_209132276" MODIFIED="1320079088956" TEXT="alternatief = ook kijken naar ontvangers, dat die niet van te veel verschillende mensen moeten ontvangen?"/>
 <node CREATED="1320145933915" ID="ID_1514721331" MODIFIED="1320145938573" TEXT="afrondingsfouten !!"/>
@@ -84,7 +84,7 @@
 <node CREATED="1316259214877" ID="ID_792532515" MODIFIED="1316259220477" POSITION="right" TEXT="currency conversies?"/>
 <node CREATED="1316259257518" ID="ID_1033716819" MODIFIED="1316259262374" POSITION="left" TEXT="reclame/inkomsten??"/>
 <node CREATED="1316259266071" ID="ID_1631554735" MODIFIED="1316259271326" POSITION="left" TEXT="rechten? trademark?"/>
-<node CREATED="1316259284991" ID="ID_1620637583" MODIFIED="1316259290167" POSITION="right" TEXT="database">
+<node CREATED="1316259284991" FOLDED="true" ID="ID_1620637583" MODIFIED="1340543946051" POSITION="right" TEXT="database">
 <node CREATED="1316259290631" ID="ID_51103729" MODIFIED="1316259292815" TEXT="entry-time"/>
 <node CREATED="1316259293319" ID="ID_1408511169" MODIFIED="1316259297903" TEXT="name (from other table)"/>
 <node CREATED="1316259298359" ID="ID_659305946" MODIFIED="1316259303288" TEXT="description (just some text)"/>
@@ -95,6 +95,9 @@
 <node CREATED="1319996214997" ID="ID_930802451" MODIFIED="1319996242170" TEXT="wiki met setup-info, links naar goeie info die we gebruiken, onze way of working"/>
 </node>
 <node CREATED="1320079000061" ID="ID_641834584" MODIFIED="1320079007934" POSITION="left" TEXT="rekeningnummers uitwisselen!!!"/>
-<node CREATED="1320079024366" ID="ID_747490150" MODIFIED="1320079024366" POSITION="left" TEXT=""/>
+<node CREATED="1320079024366" ID="ID_747490150" MODIFIED="1340543952212" POSITION="left" TEXT="source hosting">
+<node CREATED="1340543952683" ID="ID_601168888" MODIFIED="1340543955728" TEXT="open source of niet??"/>
+</node>
+<node CREATED="1340543923134" ID="ID_511629705" MODIFIED="1340543927065" POSITION="right" TEXT="crpr hosting opzetten"/>
 </node>
 </map>
