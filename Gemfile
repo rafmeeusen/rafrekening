@@ -32,3 +32,8 @@ gem 'jquery-rails'
 # To use debugger
 # gem 'ruby-debug'
 
+# for newrelic Heroku add-on (keep dyno alive by pinging) 
+group :production do
+  gem 'newrelic_rpm'
+end
+
