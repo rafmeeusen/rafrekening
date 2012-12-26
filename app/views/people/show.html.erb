@@ -16,7 +16,7 @@ To move person between contributers and non-contributers: click on person link.
   </tr>
   <% @person.expenses.each do |exp| %>
     <tr> <td> <%= link_to exp.description, expense_path(exp.id), :confirm=>'Removing expense. Are you sure?', :method=>:delete %> </td> 
-         <td> <%= exp.amount %> </td> 
+         <td> <%= number_to_currency(exp.amount) %> </td> 
          <td> <% exp.getContributers.each do |c| %>
               <% link=root_path + @project.secret + "/expenses/" + exp.id.to_s + "/?person=" + c[:person].id.to_s + "&weight=0" %>
               <%= link_to c[:person].name, link %> 
