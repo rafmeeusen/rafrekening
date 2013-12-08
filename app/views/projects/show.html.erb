@@ -1,0 +1,84 @@
+<p id="notice"><%= notice %></p>
+
+<h1><%=@project.title%></h1>
+
+<p>
+Project id: <%= @project.id %> <br> 
+</p>
+
+<table>
+  <b>People:</b> <br>
+  <tr>
+    <th></th>  <th></th>  <th></th>
+  </tr> 
+  <% @project.people.each do |person| %>
+    <tr><td><%= link_to person.name, person_path(person.name) %> (weight <%= person.pweight %>)</td>
+        <td><%= link_to 'Edit', person_edit_path(person.name) %></td>
+        <td><%= link_to 'Remove', person_path(person.name), :confirm=>"Removing #{person.name} from project. Are you sure?", 
+                                                            :method=>:delete %></td>
+    </tr>
+  <% end %>
+</table>
+
+<p>
+<%= link_to 'Add Person', root_path + @project.secret + "/people/new" %>
+</p>
+
+<table>
+  <b>Expenses:</b> <br>
+  <tr>
+    <th>Person</th>
+    <th>Amount</th>
+    <th>Description</th>
+    <th>Contributors</th>
+    <th></th>
+  </tr>
+<% @project.expenses.each do |expense| %>
+  <tr>
+    <td><%= expense.person.name %></td>
+    <td><%= expense.amount %></td>
+    <td><%= expense.description %></td>
+    <td><% contrib=expense.getContributers %>
+        <% if contrib.length == @project.people.length 
+             contribString = 'All' 
+           else
+             contribString = ''
+             contrib.each{|c| contribString<<( c[:person].name + " ") }
+           end
+          %>
+        <%= contribString %>
+        </td>
+  </tr>
+<% end %>
+</table>
+<p>
+<?%= link_to 'New expense', new_person_expense_path %> 
+</p>
+
+<p>
+  <b>Overal total: <%= @project.totalAmount %> </b>
+</p>
+
+<p>
+<b>Calculation results:</b>
+</p>
+<p>
+<% @project.people.each do |person| %>
+  <% if person.saldo >= 0
+         verb='still to pay'
+     else
+         verb='to get back'
+     end %>
+  <%= person.name %> should contribute <%= person.amountToPay.to_f.round(2) %>, 
+  has paid <%= person.totalAmount.to_f.round(2) %> already, so has   
+  <%=person.saldo.abs.to_f.round(2)%> <%=verb%>. <br>
+<% end %>
+</p>
+
+<table>
+<b>Proposed payments:</b>
+  <% @project.getPayments.each do |pmt| %> 
+    <tr><td> <%= pmt.from %> pays <%= pmt.amount.round(2) %> to <%= pmt.to %>. </td></tr>
+  <% end %> 
+</table>
+

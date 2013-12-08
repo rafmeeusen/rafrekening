@@ -1,0 +1,10 @@
+-- name with space: crashes when adding expense to this person
+-- expense with no contributors: crashes when calculating costs
+-- expense with only contributors that have zero person-weight: crashes when calculating costs
+-- too long project name: crashes app
+-- person name ending with space: cannot add expenses
+-- hint layout/ideas: checkthis.com
+-- komma/decimal point beide accepteren.
+
+
+

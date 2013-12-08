@@ -1,0 +1,21 @@
+<h1>Editing person</h1>
+
+<form method="post"> 
+  <input name="_method" type="hidden" value="put" /> 
+
+  <div class="field">
+    <label for="person_name">Name</label><br />
+    <input id="person_name" name="person[name]" size="30" type="text" value="<%=@person.name%>" />
+  </div>
+
+  <div class="field">
+    <label for="person_pweight">Weight</label><br />
+    <input id="person_pweight" name="person[pweight]" size="30" type="text" value="<%=@person.pweight%>" />
+  </div>
+
+  <div class="actions">
+    <input name="commit" type="submit" value="Update person" />
+  </div>
+</form>
+
+<%= link_to 'Back to project', project_path %>
